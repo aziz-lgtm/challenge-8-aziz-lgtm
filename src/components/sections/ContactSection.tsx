@@ -68,7 +68,7 @@ const ContactSection: React.FC = () => {
                     onClick={() => toggleFaq(i)}
                     className="w-full flex items-center justify-between py-5 text-left group cursor-pointer"
                   >
-                    <span className="text-2xl leading-9 font-medium text-gray-900 dark:text-white">
+                    <span className="text-xl sm:text-2xl md:text-2xl lg:text-2xl leading-9 font-medium text-gray-900 dark:text-white">
                       {faq.question}
                     </span>
                     <span className="text-[#717680] dark:text-white/50 text-xl ml-4 shrink-0">
@@ -76,7 +76,7 @@ const ContactSection: React.FC = () => {
                     </span>
                   </button>
                   {openFaq === i && (
-                    <p className="font-medium text-xl leading-8.5 text-[#A4A7AE] flex-none order-1 self-stretch grow-0 pb-5">
+                    <p className="font-medium text-md sm:text-lg md:text-lg lg:text-lg leading-8.5 text-[#A4A7AE] flex-none order-1 self-stretch grow-0 pb-5">
                       {faq.answer}
                     </p>
                   )}

@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { testimonials } from '../../data/testimonials';
 import quotationImg from '../../assets/quotation.png';
 
 const GAP = 28;
+const SWIPE_THRESHOLD = 50;
 
 const TestimonialsSection: React.FC = () => {
   const [current, setCurrent] = useState(1);
   const [cardW, setCardW] = useState(() => Math.min(window.innerWidth - 48, 594));
+  const dragStartX = useRef<number | null>(null);
+  const [dragDelta, setDragDelta] = useState(0);
+  const [grabbing, setGrabbing] = useState(false);
 
   useEffect(() => {
     const update = () => setCardW(Math.min(window.innerWidth - 48, 594));
@@ -15,6 +19,29 @@ const TestimonialsSection: React.FC = () => {
   }, []);
 
   const STEP = cardW + GAP;
+
+  const startDrag = (x: number) => {
+    dragStartX.current = x;
+    setGrabbing(true);
+    setDragDelta(0);
+  };
+
+  const moveDrag = (x: number) => {
+    if (!grabbing || dragStartX.current === null) return;
+    setDragDelta(x - dragStartX.current);
+  };
+
+  const endDrag = () => {
+    if (!grabbing) return;
+    setGrabbing(false);
+    if (dragDelta < -SWIPE_THRESHOLD && current < testimonials.length - 1) {
+      setCurrent(c => c + 1);
+    } else if (dragDelta > SWIPE_THRESHOLD && current > 0) {
+      setCurrent(c => c - 1);
+    }
+    dragStartX.current = null;
+    setDragDelta(0);
+  };
 
   return (
     <section id="testimonials" className="bg-gray-50 dark:bg-[#0d0d0d] py-24">
@@ -32,10 +59,18 @@ const TestimonialsSection: React.FC = () => {
       {/* pt-14/pb-10 give breathing room for quote marks above and avatars below */}
       <div className="relative overflow-x-hidden pt-14 pb-10">
         <div
-          className="flex transition-transform duration-500 ease-out"
+          className={`flex ${dragDelta === 0 ? 'transition-transform duration-500 ease-out' : ''}`}
           style={{
-            transform: `translateX(calc(50vw - ${current * STEP + cardW / 2}px))`,
+            transform: `translateX(calc(50vw - ${current * STEP + cardW / 2}px + ${dragDelta}px))`,
+            cursor: grabbing ? 'grabbing' : 'grab',
           }}
+          onMouseDown={e => startDrag(e.clientX)}
+          onMouseMove={e => moveDrag(e.clientX)}
+          onMouseUp={endDrag}
+          onMouseLeave={endDrag}
+          onTouchStart={e => startDrag(e.touches[0].clientX)}
+          onTouchMove={e => { e.preventDefault(); moveDrag(e.touches[0].clientX); }}
+          onTouchEnd={endDrag}
         >
           {testimonials.map((t, i) => {
             const isActive = i === current;
@@ -70,7 +105,7 @@ const TestimonialsSection: React.FC = () => {
                   </div>
 
                   {/* Quote */}
-                  <p className="h-24 font-semibold text-lg sm:w-82.25 sm:mx-auto sm:h-28 sm:text-sm sm:leading-7 md:w-full md:mx-0 md:h-24 md:text-lg md:leading-8 lg:text-lg lg:leading-8 leading-8 text-center text-gray-800 dark:text-[#FDFDFD] flex-none order-1 sm:order-1 self-stretch sm:self-stretch grow-0 sm:grow-0 z-1">
+                  <p className="h-24 font-semibold text-sm sm:text-md md:text-xl lg:text-xl leading-8 sm:w-82.25 sm:mx-auto sm:h-28 sm:text-sm sm:leading-7 md:w-full md:mx-0 md:h-24 md:text-lg md:leading-8 lg:text-lg lg:leading-8 leading-8 text-center text-gray-800 dark:text-[#FDFDFD] flex-none order-1 sm:order-1 self-stretch sm:self-stretch grow-0 sm:grow-0 z-1">
                     "{t.quote}"
                   </p>
 
