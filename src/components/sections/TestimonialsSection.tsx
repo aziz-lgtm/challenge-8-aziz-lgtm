@@ -105,7 +105,7 @@ const TestimonialsSection: React.FC = () => {
                   </div>
 
                   {/* Quote */}
-                  <p className="h-24 font-semibold text-sm sm:text-md md:text-xl lg:text-xl leading-4 sm:w-82.25 sm:mx-auto sm:h-28 sm:text-sm sm:leading-7 md:w-full md:mx-0 md:h-24 md:text-lg md:leading-8 lg:text-lg lg:leading-8 leading-8 text-center text-gray-800 dark:text-[#FDFDFD] flex-none order-1 sm:order-1 self-stretch sm:self-stretch grow-0 sm:grow-0 z-1">
+                  <p className="h-24 font-semibold text-sm sm:text-md md:text-xl lg:text-xl sm:w-82.25 sm:mx-auto sm:h-28 sm:text-sm sm:leading-7 md:w-full md:mx-0 md:h-24 md:leading-8 lg:leading-8 leading-8 text-center text-gray-800 dark:text-[#FDFDFD] flex-none order-1 sm:order-1 self-stretch sm:self-stretch grow-0 sm:grow-0 z-1">
                     "{t.quote}"
                   </p>
 

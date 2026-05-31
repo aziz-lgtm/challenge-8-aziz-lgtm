@@ -85,12 +85,12 @@ const ContactSection: React.FC = () => {
             </div>
 
             {/* Right — Orange CTA card */}
-            <div className="bg-[#CC4E32] rounded-3xl p-6 flex flex-col justify-center items-start gap-6 w-full md:w-82.25 lg:w-82.25 h-auto md:h-[453.38px] lg:h-[453.38px] shrink-0 order-1">
+            <div className="bg-[#CC4E32] rounded-3xl p-6 flex flex-col justify-center items-start gap-6 w-full h-auto md:h-[453.38px] lg:h-[453.38px] shrink-0 order-1">
               <div>
-                <h3 className="w-full font-bold text-2xl sm:w-80.25 sm:h-9.5 sm:text-[28px] sm:leading-9.5 md:w-full md:h-auto md:text-2xl md:leading-8 lg:text-4xl lg:leading-11 leading-8 tracking-[-0.02em] text-white flex-none order-0 sm:order-0 self-stretch sm:self-stretch grow-0 sm:grow-0">
+                <h3 className="w-full font-bold text-2xl sm:text-[28px] sm:leading-9.5 md:text-2xl md:leading-8 lg:text-4xl lg:leading-11 leading-8 tracking-[-0.02em] text-white flex-none order-0 self-stretch grow-0">
                   Let's talk it through
                 </h3>
-                <p className="w-80.25 h-7 font-semibold text-sm sm:w-80.25 sm:h-7 sm:text-sm sm:leading-7 md:w-70.25 md:h-16 md:text-lg md:leading-8 lg:text-lg lg:leading-8 leading-7 text-white flex-none order-1 sm:order-1 self-stretch sm:self-stretch grow-0 sm:grow-0">
+                <p className="w-full font-semibold text-sm sm:text-sm sm:leading-7 md:text-lg md:leading-8 lg:text-lg lg:leading-8 leading-7 text-white flex-none order-1 self-stretch grow-0">
                   book a free consultation with our team.
                 </p>
               </div>
@@ -99,7 +99,7 @@ const ContactSection: React.FC = () => {
                 alt="Team consultation"
                 className="rounded-xl w-full object-cover"
               />
-              <a href="#contact" className="flex flex-row justify-center items-center p-2 gap-1 w-full sm:w-full md:w-70.25 lg:w-70.25 h-12 bg-[#000000] dark:bg-white shadow-[inset_4px_4px_4px_rgba(255,255,255,0.25)] rounded-full flex-none order-2 self-stretch grow-0 text-white dark:text-[#1a1a1a] font-bold text-sm hover:bg-black/90 dark:hover:bg-white/90 hover:scale-105 transition-all duration-200 no-underline">
+              <a href="#contact" className="flex flex-row justify-center items-center p-2 gap-1 w-full h-12 bg-[#000000] dark:bg-white shadow-[inset_4px_4px_4px_rgba(255,255,255,0.25)] rounded-full flex-none order-2 self-stretch grow-0 text-white dark:text-[#1a1a1a] font-bold text-sm hover:bg-black/90 dark:hover:bg-white/90 hover:scale-105 transition-all duration-200 no-underline">
                 Free Consultation
               </a>
             </div>
@@ -115,7 +115,7 @@ const ContactSection: React.FC = () => {
             <h2 className="w-full font-bold text-[28px] sm:text-[34px] md:text-[40px] lg:text-[40px] leading-tight md:leading-14 lg:leading-14 text-center tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 mb-4">
               Ready to Start? Let's Talk.
             </h2>
-            <p className="w-90.25 h-7 mx-auto font-medium text-sm leading-7 sm:w-90.25 sm:h-7 sm:mx-auto sm:text-sm sm:leading-7 md:w-full md:max-w-180 md:mx-auto md:h-auto md:text-lg md:leading-8 lg:text-lg lg:leading-8 text-center text-[#A4A7AE] flex-none order-1 sm:order-1 self-stretch sm:self-stretch grow-0 sm:grow-0">
+            <p className="w-full mx-auto font-medium text-sm leading-7 md:max-w-180 md:text-lg md:leading-8 lg:text-lg lg:leading-8 text-center text-[#A4A7AE] flex-none order-1 self-stretch grow-0">
               Tell us what you need, and we'll get back to you soon.
             </p>
           </div>
