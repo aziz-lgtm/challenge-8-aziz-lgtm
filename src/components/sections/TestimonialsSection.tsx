@@ -136,7 +136,7 @@ const TestimonialsSection: React.FC = () => {
                 </div>
 
                 {/* Avatar — breaks below card */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-65.5 flex-none order-2 grow-0 z-2">
+                <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 flex-none order-2 grow-0 z-2">
                   {t.avatarImg ? (
                     <img
                       src={t.avatarImg}
