@@ -75,7 +75,7 @@ const TestimonialsSection: React.FC = () => {
         <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-[clamp(3rem,12vw,10rem)] bg-linear-to-l from-gray-50 dark:from-[#0d0d0d] to-transparent z-10 pointer-events-none" />
 
         <div
-          className={`flex ${dragDelta === 0 ? 'transition-transform duration-500 ease-out' : ''}`}
+          className={`flex items-start ${dragDelta === 0 ? 'transition-transform duration-500 ease-out' : ''}`}
           style={{
             transform: `translateX(${vpWidth / 2 - (current * STEP + cardW / 2) + dragDelta}px)`,
             cursor: grabbing ? 'grabbing' : 'grab',
