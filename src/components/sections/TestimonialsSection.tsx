@@ -5,15 +5,25 @@ import quotationImg from '../../assets/quotation.png';
 const GAP = 28;
 const SWIPE_THRESHOLD = 50;
 
+// Mirrors the navbar clamp: clamp(1.5rem, calc(-2.394rem + 13.93vw), 8.75rem)
+// Uses clientWidth (excludes scrollbar) so the card aligns with the navbar's visual edges.
+const getNavMargin = (w: number) => Math.min(Math.max(24, 0.1393 * w - 38.304), 140);
+
+const getClientW = () => document.documentElement.clientWidth;
+
+const calcCardW = (w: number) =>
+  w < 640 ? w - 2 * getNavMargin(w) : Math.min(w - 80, 594);
+
 const TestimonialsSection: React.FC = () => {
   const [current, setCurrent] = useState(1);
-  const [cardW, setCardW] = useState(() => Math.min(window.innerWidth - 48, 594));
+  const [vpWidth, setVpWidth] = useState(() => getClientW());
+  const cardW = calcCardW(vpWidth);
   const dragStartX = useRef<number | null>(null);
   const [dragDelta, setDragDelta] = useState(0);
   const [grabbing, setGrabbing] = useState(false);
 
   useEffect(() => {
-    const update = () => setCardW(Math.min(window.innerWidth - 48, 594));
+    const update = () => setVpWidth(getClientW());
     window.addEventListener('resize', update);
     return () => window.removeEventListener('resize', update);
   }, []);
@@ -44,24 +54,30 @@ const TestimonialsSection: React.FC = () => {
   };
 
   return (
-    <section id="testimonials" className="bg-gray-50 dark:bg-[#0d0d0d] py-24">
+    <section id="testimonials" className="bg-gray-50 dark:bg-[#0d0d0d] py-[clamp(3.5rem,8vw,6rem)]">
 
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center mb-16">
-        <h2 className="font-bold text-[28px] sm:w-98.25 sm:mx-auto sm:h-19 sm:text-[28px] sm:leading-9.5 md:w-full md:mx-0 md:h-auto md:text-[40px] md:leading-14 lg:text-[40px] lg:leading-14 leading-tight text-center sm:text-center tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none sm:flex-none order-0 sm:order-0 self-stretch sm:self-stretch grow-0 sm:grow-0 mb-4">
+      <div className="mx-[clamp(1rem,calc(-2.394rem+13.93vw),8.75rem)] text-center mb-16">
+        <h2 className="w-full font-bold text-[clamp(1.75rem,calc(0.975rem+3.175vw),2.5rem)] leading-tight text-center tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] mb-4">
           What Partners Say About Working With Us
         </h2>
-        <p className="font-medium text-lg sm:w-98.25 sm:mx-auto sm:h-7 sm:text-sm sm:leading-7 md:w-full md:mx-0 md:h-auto md:text-lg md:leading-8 lg:text-lg lg:leading-8 leading-8 text-center text-[#A4A7AE] flex-none order-1 sm:order-1 self-stretch sm:self-stretch grow-0 sm:grow-0">
+        <p className="font-medium text-[clamp(0.875rem,1.8vw,1.125rem)] leading-7 md:leading-8 text-center text-[#A4A7AE]">
           Trusted voices. Real experiences. Proven results.
         </p>
       </div>
 
       {/* pt-14/pb-10 give breathing room for quote marks above and avatars below */}
-      <div className="relative overflow-x-hidden pt-14 pb-10">
+      <div className="relative overflow-hidden pt-14 pb-24">
+
+        {/* Left fade overlay — hidden on mobile */}
+        <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-[clamp(3rem,12vw,10rem)] bg-linear-to-r from-gray-50 dark:from-[#0d0d0d] to-transparent z-10 pointer-events-none" />
+        {/* Right fade overlay — hidden on mobile */}
+        <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-[clamp(3rem,12vw,10rem)] bg-linear-to-l from-gray-50 dark:from-[#0d0d0d] to-transparent z-10 pointer-events-none" />
+
         <div
           className={`flex ${dragDelta === 0 ? 'transition-transform duration-500 ease-out' : ''}`}
           style={{
-            transform: `translateX(calc(50vw - ${current * STEP + cardW / 2}px + ${dragDelta}px))`,
+            transform: `translateX(${vpWidth / 2 - (current * STEP + cardW / 2) + dragDelta}px)`,
             cursor: grabbing ? 'grabbing' : 'grab',
           }}
           onMouseDown={e => startDrag(e.clientX)}
@@ -105,14 +121,14 @@ const TestimonialsSection: React.FC = () => {
                   </div>
 
                   {/* Quote */}
-                  <p className="h-24 font-semibold text-sm sm:text-md md:text-xl lg:text-xl sm:w-82.25 sm:mx-auto sm:h-28 sm:text-sm sm:leading-7 md:w-full md:mx-0 md:h-24 md:leading-8 lg:leading-8 leading-8 text-center text-gray-800 dark:text-[#FDFDFD] flex-none order-1 sm:order-1 self-stretch sm:self-stretch grow-0 sm:grow-0 z-1">
+                  <p className="w-full font-semibold text-[clamp(0.875rem,1.5vw,1.125rem)] leading-7 md:leading-8 text-center text-gray-800 dark:text-[#FDFDFD] flex-none order-1 self-stretch grow-0 z-1">
                     "{t.quote}"
                   </p>
 
                   {/* Name + Role grouped */}
-                  <div className="flex flex-col items-center self-stretch order-2">
-                    <p className="h-8 font-semibold text-lg leading-8 text-center text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0">{t.name}</p>
-                    <p className="h-8 font-semibold text-lg leading-8 text-center text-[#FF623E] flex-none order-1 self-stretch grow-0">
+                  <div className="flex flex-col items-center self-stretch order-2 gap-0.5">
+                    <p className="font-semibold text-base md:text-lg leading-6 md:leading-8 text-center text-gray-900 dark:text-[#FDFDFD]">{t.name}</p>
+                    <p className="font-semibold text-xs md:text-base leading-5 md:leading-7 text-center text-[#FF623E]">
                       {t.role} at {t.company}
                     </p>
                   </div>
@@ -144,9 +160,9 @@ const TestimonialsSection: React.FC = () => {
 
       {/* Pagination dots */}
       <div className="flex justify-center gap-3 mt-10">
-        {testimonials.map((_, i) => (
+        {testimonials.map((t, i) => (
           <button
-            key={i}
+            key={t.id}
             onClick={() => setCurrent(i)}
             aria-label={`Go to testimonial ${i + 1}`}
             className={`rounded-full transition-all duration-300 cursor-pointer ${

@@ -36,23 +36,22 @@ const AboutSection: React.FC = () => {
   };
 
   return (
-    <section id='about' className='bg-white dark:bg-[#0a0a0a] pb-10 md:pb-32'>
-      {/* Brand strip */}
-      <div className='relative h-48 overflow-hidden mb-24 mask-[linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)] sm:mask-[linear-gradient(to_right,transparent_0%,transparent_15%,black_25%,black_75%,transparent_85%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)] sm:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,transparent_15%,black_25%,black_75%,transparent_85%,transparent_100%)]'>
+    <section id='about' className='bg-white dark:bg-[#0a0a0a] pb-[clamp(2.5rem,10vw,8rem)] px-[clamp(1rem,calc(-2.394rem+13.93vw),8.75rem)]'>
+      {/* Title — outside the mask so it never gets the fade effect */}
+      <span className='block font-bold text-base sm:text-lg md:text-2xl leading-7.5 sm:leading-8 md:leading-9 text-center tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] mb-6'>
+        Trusted by Global Innovators & Leading Brands
+      </span>
 
-        {/* Title */}
-        <span className='block w-full sm:w-auto h-7.5 sm:h-auto font-bold text-base sm:text-lg md:text-2xl leading-7.5 sm:leading-8 md:leading-9 text-center tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0'>
-          Trusted by Global Innovators & Leading Brands
-        </span>
-
+      {/* Brand strip — full-width bleed, mask applies ONLY to logos */}
+      <div className='-mx-[clamp(1rem,calc(-2.394rem+13.93vw),8.75rem)] relative h-32 overflow-hidden mb-24 mask-[linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)] sm:mask-[linear-gradient(to_right,transparent_0%,transparent_15%,black_25%,black_75%,transparent_85%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)] sm:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,transparent_15%,black_25%,black_75%,transparent_85%,transparent_100%)]'>
         {/* Logos container — doubled for seamless loop */}
         <div
           aria-hidden='true'
-          className='flex flex-row items-center py-10 absolute w-max h-32 left-0 top-16 animate-marquee'
+          className='flex flex-row items-center py-10 absolute w-max h-32 left-0 top-0 animate-marquee'
         >
           {[...logos, ...logos].map((logo, i) => (
             <img
-              key={i}
+              key={`${logo.alt}-${i}`}
               src={logo.src}
               alt={logo.alt}
               className={`${logo.height ?? 'h-12'} w-auto max-w-34 mr-12 mix-blend-luminosity shrink-0 opacity-[0.65] grayscale object-contain transition-all duration-200 ease-in-out hover:opacity-100 hover:grayscale-0 hover:scale-105`}
@@ -61,28 +60,27 @@ const AboutSection: React.FC = () => {
         </div>
       </div>
 
-      <div className='max-w-7xl mx-auto px-6 lg:px-8'>
-        {/* Header + stats */}
+      {/* Header + stats */}
         <div className='flex flex-col items-center text-center gap-12 mb-24'>
           <div className='w-full max-w-5xl'>
-            <h2 className='w-90.25 sm:w-full h-19 sm:h-auto mx-auto sm:mx-0 font-bold text-[28px] sm:text-[34px] md:text-[40px] leading-9.5 md:leading-14 text-center tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 m-0'>
+            <h2 className='w-full mx-auto font-bold text-[clamp(1.75rem,calc(0.975rem+3.175vw),2.5rem)] leading-tight text-center tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 m-0'>
               End-to-End IT Solutions That Drive Results
             </h2>
-            <p className='w-90.25 sm:w-full h-14 sm:h-auto mx-auto sm:mx-0 font-medium text-sm sm:text-lg leading-7 sm:leading-8 text-center text-[#717680] dark:text-[#A4A7AE] flex-none order-1 self-stretch grow-0 m-0'>
+            <p className='w-full mx-auto font-medium text-[clamp(0.875rem,1.8vw,1.125rem)] leading-7 sm:leading-8 text-center text-[#717680] dark:text-[#A4A7AE] flex-none order-1 self-stretch grow-0 m-0'>
               {companyInfo.longDescription}
             </p>
           </div>
 
-          <div className='flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-6 w-full'>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full'>
             {companyStats.map((stat) => (
               <div
                 key={stat.label}
-                className='flex flex-col justify-center items-center p-4 gap-1.5 w-45 md:w-60 aspect-square lg:aspect-auto lg:w-68.75 lg:h-68.75 bg-gray-50 dark:bg-[#0A0D12] border border-gray-200 dark:border-[#181D27] rounded-full flex-none order-0 transition-all duration-300 hover:scale-105 hover:border-[#FF623E]/50 hover:shadow-lg'
+                className='flex flex-col justify-center items-center p-4 gap-1.5 aspect-square bg-gray-50 dark:bg-[#0A0D12] border border-gray-200 dark:border-[#181D27] rounded-full transition-all duration-300 hover:scale-105 hover:border-[#FF623E]/50 hover:shadow-lg'
               >
-                <p className='w-full lg:w-60.75 h-11 lg:h-15 font-bold text-4xl lg:text-5xl leading-11 lg:leading-15 text-center tracking-[-0.02em] text-[#FF623E] flex-none order-0 self-stretch grow-0 m-0'>
+                <p className='w-full font-bold text-[clamp(1.5rem,3vw,3rem)] text-center tracking-[-0.02em] text-[#FF623E] m-0'>
                   {stat.value}
                 </p>
-                <p className='w-full lg:w-60.75 h-7 lg:h-8.5 font-semibold text-sm lg:text-xl leading-7 lg:leading-8.5 text-center text-[#0A0D12] dark:text-[#FDFDFD] flex-none order-1 self-stretch grow-0 m-0'>
+                <p className='w-full font-semibold text-[clamp(0.75rem,1.2vw,1.25rem)] text-center text-[#0A0D12] dark:text-[#FDFDFD] m-0'>
                   {stat.label}
                 </p>
               </div>
@@ -91,12 +89,12 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* Our Process */}
-        <div className='mx-auto max-w-6xl'>
+        <div className='w-full'>
           <div className='flex flex-col items-center text-center gap-4 mb-12'>
-            <h2 className='w-90.25 sm:w-auto h-9.5 sm:h-auto mx-auto sm:mx-0 font-bold text-[28px] sm:text-4xl md:text-5xl leading-9.5 sm:leading-tight tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0'>
+            <h2 className='w-full mx-auto font-bold text-[clamp(1.75rem,calc(0.975rem+3.175vw),3rem)] leading-tight tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0'>
               Our Process
             </h2>
-            <p className='w-90.25 sm:w-full h-14 sm:h-8 mx-auto sm:mx-0 font-medium text-sm sm:text-lg leading-7 sm:leading-8 text-center text-[#A4A7AE] flex-none order-1 self-stretch grow-0'>
+            <p className='w-full mx-auto font-medium text-[clamp(0.875rem,1.8vw,1.125rem)] leading-7 sm:leading-8 text-center text-[#A4A7AE] flex-none order-1 self-stretch grow-0'>
               Clear steps. Smart execution. Results you can count on.
             </p>
           </div>
@@ -113,8 +111,8 @@ const AboutSection: React.FC = () => {
 
                 const card = (
                   <div className='w-full rounded-2xl bg-gray-50 dark:bg-[#0A0D12] p-4 cursor-pointer border border-gray-200 dark:border-[#181D27] transition-all duration-200 hover:border-gray-300 dark:hover:border-white/10 hover:bg-gray-100 dark:hover:bg-[#1a1a1a]' onClick={() => toggle(index)}>
-                    <div className='flex items-center justify-between gap-10'>
-                      <h3 className='flex-1 lg:w-83.25 lg:flex-none font-bold text-base lg:text-xl leading-7.5 lg:leading-8.5 tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] order-0 self-stretch m-0'>
+                    <div className='flex items-center justify-between gap-[clamp(0.5rem,1.5vw,2.5rem)]'>
+                      <h3 className='flex-1 font-bold text-[clamp(1rem,1.5vw,1.25rem)] leading-tight tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] order-0 self-stretch m-0'>
                         {step.title}
                       </h3>
                       <span className={`shrink-0 transition-transform duration-200 ${isOpen ? 'text-[#FF5C00] rotate-180' : 'text-[#717680] dark:text-[#FDFDFD]'}`}>
@@ -122,7 +120,7 @@ const AboutSection: React.FC = () => {
                       </span>
                     </div>
                     {isOpen && (
-                      <p className='w-full lg:w-83.25 font-medium text-sm lg:text-base leading-7 lg:leading-7.5 text-[#A4A7AE] flex-none order-1 self-stretch grow-0 m-0 mt-2'>
+                      <p className='w-full font-medium text-[clamp(0.875rem,1.2vw,1rem)] leading-7 text-[#A4A7AE] flex-none order-1 self-stretch grow-0 m-0 mt-2'>
                         {step.detail}
                       </p>
                     )}
@@ -142,7 +140,7 @@ const AboutSection: React.FC = () => {
                     </div>
 
                     {/* Desktop zigzag layout */}
-                    <div className='hidden lg:flex items-center justify-end pr-8'>
+                    <div className='hidden lg:flex items-center justify-end pr-[clamp(1rem,2vw,2rem)]'>
                       {isLeft ? card : null}
                     </div>
                     <div className='hidden lg:flex relative z-10 items-center justify-center py-2'>
@@ -150,7 +148,7 @@ const AboutSection: React.FC = () => {
                         {step.number}
                       </div>
                     </div>
-                    <div className='hidden lg:flex items-center justify-start pl-8'>
+                    <div className='hidden lg:flex items-center justify-start pl-[clamp(1rem,2vw,2rem)]'>
                       {!isLeft ? card : null}
                     </div>
                   </React.Fragment>
@@ -159,7 +157,6 @@ const AboutSection: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };

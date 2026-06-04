@@ -41,15 +41,15 @@ const ContactSection: React.FC = () => {
   return (
     <>
       {/* FAQ */}
-      <section id="faq" className="bg-white dark:bg-[#0a0a0a] py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section id="faq" className="bg-white dark:bg-[#0a0a0a] py-[clamp(3.5rem,8vw,6rem)]">
+        <div className="mx-[clamp(1rem,calc(-2.394rem+13.93vw),8.75rem)]">
 
           {/* Header row */}
           <div className="flex flex-col md:flex-row lg:flex-row md:items-start lg:items-start md:justify-between lg:justify-between mb-6 gap-2 md:gap-0">
-            <h2 className="font-bold text-[28px] sm:text-[34px] md:text-[40px] lg:text-[40px] leading-tight md:leading-14 lg:leading-14 tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD]">
+            <h2 className="font-bold text-[clamp(1.75rem,calc(0.975rem+3.175vw),2.5rem)] leading-tight tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD]">
               Need Help? Start<br />Here.
             </h2>
-            <p className="font-medium text-base md:text-lg leading-8 md:text-right text-[#A4A7AE] md:w-61.25">
+            <p className="font-medium text-[clamp(0.875rem,1.5vw,1.125rem)] leading-7 md:text-right text-[#A4A7AE] md:w-61.25">
               Everything you need to know — all in one place.
             </p>
           </div>
@@ -58,17 +58,17 @@ const ContactSection: React.FC = () => {
           <div className="border-t border-gray-200 dark:border-white/10 mb-10" />
 
           {/* Two columns */}
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] lg:grid-cols-[1fr_280px] gap-10 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_329px] lg:grid-cols-[1fr_329px] gap-10 items-start">
 
             {/* Left — FAQ accordion */}
             <div>
               {faqItems.map((faq, i) => (
-                <div key={i} className="border-b border-gray-200 dark:border-white/10 transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-white/3 rounded-lg px-2 -mx-2">
+                <div key={faq.question} className="border-b border-gray-200 dark:border-white/10 transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-white/3 rounded-lg px-2 -mx-2">
                   <button
                     onClick={() => toggleFaq(i)}
                     className="w-full flex items-center justify-between py-5 text-left group cursor-pointer"
                   >
-                    <span className="text-xl sm:text-2xl md:text-2xl lg:text-2xl leading-9 font-medium text-gray-900 dark:text-white">
+                    <span className="text-[clamp(1.125rem,2.5vw,1.5rem)] leading-tight font-medium text-gray-900 dark:text-white">
                       {faq.question}
                     </span>
                     <span className="text-[#717680] dark:text-white/50 text-xl ml-4 shrink-0">
@@ -85,7 +85,7 @@ const ContactSection: React.FC = () => {
             </div>
 
             {/* Right — Orange CTA card */}
-            <div className="bg-[#CC4E32] rounded-3xl p-6 flex flex-col justify-center items-start gap-6 w-full h-auto md:h-[453.38px] lg:h-[453.38px] shrink-0 order-1">
+            <div className="bg-[#CC4E32] rounded-3xl p-6 flex flex-col justify-center items-start gap-6 w-full md:w-82.25 h-auto md:h-[453.38px] shrink-0 order-1">
               <div>
                 <h3 className="w-full font-bold text-2xl sm:text-[28px] sm:leading-9.5 md:text-2xl md:leading-8 lg:text-4xl lg:leading-11 leading-8 tracking-[-0.02em] text-white flex-none order-0 self-stretch grow-0">
                   Let's talk it through
@@ -109,7 +109,7 @@ const ContactSection: React.FC = () => {
       </section>
 
       {/* Contact form */}
-      <section id="contact" className="bg-gray-50 dark:bg-[#0d0d0d] py-32 border-t border-gray-200 dark:border-white/4">
+      <section id="contact" className="bg-gray-50 dark:bg-[#0d0d0d] py-[clamp(4rem,10vw,8rem)] border-t border-gray-200 dark:border-white/4">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
             <h2 className="w-full font-bold text-[28px] sm:text-[34px] md:text-[40px] lg:text-[40px] leading-tight md:leading-14 lg:leading-14 text-center tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 mb-4">

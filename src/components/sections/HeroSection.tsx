@@ -23,30 +23,30 @@ const HeroSection: React.FC = () => {
         className='hidden lg:block absolute bottom-0 left-0 w-100 h-100 pointer-events-none [background:radial-gradient(ellipse_at_20%_90%,rgba(255,92,0,0.05)_0%,transparent_60%)] dark:[background:radial-gradient(ellipse_at_20%_90%,rgba(255,92,0,0.07)_0%,transparent_60%)]'
       />
 
-      {/* ── Mobile layout (natural flow) ── */}
-      <div className='lg:hidden flex flex-col pt-31.25 pb-16'>
-        {/* Title + subtitle + button — centered at 361px */}
-        <div className='flex flex-col items-start p-0 gap-10 w-90.25 mx-auto'>
-          <h1 className='w-full font-bold text-[36px] md:text-[56px] leading-11 md:leading-17 tracking-[-0.02em] m-0 flex-none order-0 self-stretch grow-0'>
+      {/* ── Mobile / tablet layout (natural flow, up to lg) ── */}
+      <div className='lg:hidden flex flex-col pt-[clamp(6rem,12vw,7.8rem)] pb-16'>
+        {/* Title + subtitle + button */}
+        <div className='flex flex-col items-start gap-8 md:gap-10 w-full px-[clamp(1.5rem,calc(-2.394rem+13.93vw),8.75rem)]'>
+          <h1 className='w-full font-bold text-[clamp(2rem,6vw,3.5rem)] leading-tight tracking-[-0.02em] m-0'>
             <span className='block text-gray-900 dark:text-[#FDFDFD]'>Your Tech Partner for</span>
             <span className='block text-[#FF6C37]'>Smarter Growth</span>
           </h1>
-          <p className='w-full font-semibold text-base md:text-xl leading-7.5 md:leading-8.5 text-gray-600 dark:text-[#FDFDFD] m-0 flex-none order-1 self-stretch grow-0'>
+          <p className='w-full font-semibold text-[clamp(1rem,2vw,1.25rem)] leading-7.5 text-gray-600 dark:text-[#FDFDFD] m-0'>
             {companyInfo.description}
           </p>
           <a
             href='#contact'
-            className='flex flex-row justify-center items-center p-2 gap-1 w-full h-11 bg-[#FF623E] shadow-[inset_4px_4px_4px_rgba(255,255,255,0.25)] rounded-full font-semibold text-base text-white no-underline transition-all duration-200 hover:bg-[#FF623E]/90 hover:scale-105 flex-none order-2 self-stretch grow-0'
+            className='flex flex-row justify-center items-center p-2 gap-1 w-full md:w-auto md:px-8 h-11 bg-[#FF623E] shadow-[inset_4px_4px_4px_rgba(255,255,255,0.25)] rounded-full font-semibold text-base text-white no-underline transition-all duration-200 hover:bg-[#FF623E]/90 hover:scale-105'
           >
             Let's Talk
           </a>
         </div>
 
-        {/* Hero image — full width, naturally below content */}
+        {/* Hero image */}
         <img
           src={heroImage}
           alt='Hero Image'
-          className='w-full aspect-square object-contain mt-10.75'
+          className='w-full md:w-3/4 md:mx-auto aspect-square object-contain mt-10'
         />
       </div>
 

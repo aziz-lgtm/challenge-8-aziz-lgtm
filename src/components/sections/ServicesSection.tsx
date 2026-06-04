@@ -7,15 +7,15 @@ const ServicesSection: React.FC = () => {
   const active = industries.find((ind) => ind.id === activeId)!;
 
   return (
-    <section id='services' className='bg-gray-50 dark:bg-[#0d0d0d] py-32'>
-      <div className='max-w-7xl mx-auto px-6 lg:px-8'>
-        {/* Header — centered section */}
+    <section id='services' className='bg-gray-50 dark:bg-[#0d0d0d] py-[clamp(4rem,10vw,8rem)]'>
+      <div className='mx-[clamp(1rem,calc(-2.394rem+13.93vw),8.75rem)]'>
+        {/* Header */}
         <div className='mb-16 text-center'>
           <div className='mx-auto max-w-5xl'>
-            <h2 className='w-90.25 sm:w-full h-19 sm:h-auto mx-auto sm:mx-0 font-semibold text-[28px] sm:text-[34px] md:text-[40px] leading-9.5 md:leading-14 text-center tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 m-0'>
+            <h2 className='w-full mx-auto font-semibold text-[clamp(1.75rem,calc(0.975rem+3.175vw),2.5rem)] leading-tight tracking-[-0.02em] text-center text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 m-0'>
               Smart IT Solutions That Grow With You
             </h2>
-            <p className='w-90.25 sm:max-w-2xl h-7 sm:h-auto mx-auto font-medium text-sm sm:text-lg leading-7 sm:leading-relaxed text-center text-[#A4A7AE] flex-none order-1 self-stretch grow-0 mt-5'>
+            <p className='max-w-2xl mx-auto font-medium text-[clamp(0.875rem,1.8vw,1.125rem)] leading-relaxed text-center text-[#A4A7AE] flex-none order-1 self-stretch grow-0 mt-5'>
               Tailored tech to boost efficiency, security, and results.
             </p>
           </div>
@@ -26,7 +26,7 @@ const ServicesSection: React.FC = () => {
           {services.map((service) => (
             <div
               key={service.id}
-              className='relative flex flex-col items-start pt-12 sm:pt-12 md:pt-16 px-5 pb-5 gap-2 sm:gap-2 md:gap-5 isolate min-h-32.5 sm:min-h-32.5 md:min-h-45.5 bg-white dark:bg-[#0A0D12] border border-gray-200 dark:border-[#181D27] rounded-2xl flex-none order-1 self-stretch grow-0 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-300 dark:hover:border-white/20'
+              className='relative flex flex-col items-start pt-[clamp(3rem,5vw,4rem)] px-5 pb-5 gap-[clamp(0.5rem,2vw,1.25rem)] isolate min-h-32.5 md:min-h-45.5 bg-white dark:bg-[#0A0D12] border border-gray-200 dark:border-[#181D27] rounded-2xl flex-none order-1 self-stretch grow-0 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-300 dark:hover:border-white/20'
             >
               <div className='absolute left-5 -top-8 w-16 h-16 md:-top-10 md:w-20 md:h-20'>
                 <img
@@ -35,10 +35,10 @@ const ServicesSection: React.FC = () => {
                   className='absolute inset-0 w-full h-full object-contain'
                 />
               </div>
-              <h3 className='w-full h-7.5 sm:h-7.5 md:h-auto font-bold text-base sm:text-base md:text-xl leading-7.5 sm:leading-7.5 md:leading-8.5 tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 m-0'>
+              <h3 className='w-full font-bold text-[clamp(1rem,1.8vw,1.25rem)] leading-tight tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 m-0'>
                 {service.title}
               </h3>
-              <p className='w-full h-14 sm:h-14 md:h-auto font-medium text-sm sm:text-sm md:text-base leading-7 sm:leading-7 md:leading-7.5 text-[#A4A7AE] flex-none order-1 self-stretch grow-0 m-0'>
+              <p className='w-full font-medium text-[clamp(0.875rem,1.5vw,1rem)] leading-7 text-[#A4A7AE] flex-none order-1 self-stretch grow-0 m-0'>
                 {service.description}
               </p>
             </div>
@@ -47,22 +47,22 @@ const ServicesSection: React.FC = () => {
 
         {/* Industry focus */}
         <div>
-          <h2 className='w-90.25 sm:w-full h-10.5 sm:h-auto font-bold text-[32px] sm:text-[34px] md:text-[40px] leading-10.5 sm:leading-tight md:leading-14 tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 m-0 mb-3'>
+          <h2 className='w-full font-bold text-[clamp(2rem,calc(1.25rem+3.175vw),2.5rem)] leading-tight tracking-[-0.02em] text-gray-900 dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 m-0 mb-3'>
             Built for Your Industry
           </h2>
-          <p className='w-90.25 sm:w-full h-14 sm:h-auto font-medium text-sm sm:text-lg leading-7 sm:leading-8 text-[#A4A7AE] flex-none order-1 self-stretch grow-0 m-0 mb-10'>
+          <p className='w-full font-medium text-[clamp(0.875rem,1.8vw,1.125rem)] leading-7 sm:leading-8 text-[#A4A7AE] flex-none order-1 self-stretch grow-0 m-0 mb-10'>
             We've helped companies across industries launch smarter, faster, and more securely.
           </p>
 
-          <div className='flex flex-col gap-6 md:flex-row lg:flex-row md:gap-12 lg:gap-12'>
+          <div className='flex flex-col gap-6 lg:flex-row lg:gap-12'>
             {/* Vertical tab list */}
-            <div className='flex flex-col items-start gap-6 md:w-64 lg:w-64 md:shrink-0 lg:shrink-0'>
+            <div className='flex flex-col sm:flex-row sm:flex-wrap lg:flex-col items-start gap-4 lg:gap-6 lg:w-64 lg:shrink-0'>
               {industries.map((ind) => (
                 <button
                   key={ind.id}
                   onClick={() => setActiveId(ind.id)}
                   className={[
-                    'h-7.5 md:h-8.5 font-bold text-base md:text-xl leading-7.5 md:leading-8.5 text-center tracking-[-0.02em] whitespace-nowrap flex-none grow-0 pl-4 border-l-2 transition-all duration-200 cursor-pointer',
+                    'font-bold text-[clamp(1rem,1.8vw,1.25rem)] leading-tight tracking-[-0.02em] whitespace-nowrap flex-none grow-0 pl-4 border-l-2 transition-all duration-200 cursor-pointer py-1',
                     activeId === ind.id
                       ? 'border-[#FF5C00] text-gray-900 dark:text-[#FDFDFD]'
                       : 'border-gray-200 dark:border-white/20 text-gray-900 dark:text-[#FDFDFD] opacity-40 hover:opacity-70',
@@ -75,14 +75,14 @@ const ServicesSection: React.FC = () => {
 
             {/* Description + image stacked */}
             <div className='flex-1'>
-              <p className='w-90.25 sm:w-full h-21 sm:h-auto font-medium text-sm sm:text-lg leading-7 sm:leading-8 text-[#717680] dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 mb-6'>
+              <p className='w-full font-medium text-[clamp(0.875rem,1.8vw,1.125rem)] leading-7 sm:leading-8 text-[#717680] dark:text-[#FDFDFD] flex-none order-0 self-stretch grow-0 mb-6'>
                 {active.description}
               </p>
-              <div className='relative w-full h-50 sm:h-72 md:h-87.75 lg:h-87.75 rounded-xl sm:rounded-3xl overflow-hidden flex-none order-1 self-stretch grow-0'>
+              <div className='relative w-full h-50 sm:h-72 lg:h-87.75 rounded-xl sm:rounded-3xl overflow-hidden flex-none order-1 self-stretch grow-0'>
                 <img
                   src={active.image}
                   alt={active.label}
-                  className='w-full h-full object-cover sm:absolute sm:w-full sm:h-full sm:left-0 sm:top-0 md:static md:w-full md:h-full md:left-auto md:top-auto lg:static lg:w-full lg:h-full lg:left-auto lg:top-auto'
+                  className='w-full h-full object-cover'
                 />
               </div>
             </div>

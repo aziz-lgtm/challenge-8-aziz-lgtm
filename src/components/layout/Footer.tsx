@@ -25,8 +25,8 @@ const socialLinks = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-100 dark:bg-[#0d0d0d] py-8 px-4">
-      <div className="w-full sm:w-full md:w-full lg:w-full mx-auto max-w-290 h-124 sm:h-124 md:h-auto lg:h-auto bg-white dark:bg-[#0A0D12] border border-gray-200 dark:border-[#252B37] rounded-3xl flex flex-col items-start p-5 sm:p-5 gap-6 sm:gap-6 md:p-10 lg:p-10 flex-none order-0 self-stretch grow-0">
+    <footer className="bg-gray-100 dark:bg-[#0d0d0d] py-8">
+      <div className="mx-[clamp(1rem,calc(-2.394rem+13.93vw),8.75rem)] h-auto bg-white dark:bg-[#0A0D12] border border-gray-200 dark:border-[#252B37] rounded-3xl flex flex-col items-start p-5 sm:p-5 gap-6 sm:gap-6 md:p-10 lg:p-10 flex-none order-0 self-stretch grow-0">
 
         {/* Logo — mobile/sm top, hidden on desktop */}
         <div className="flex lg:hidden items-center gap-3">
